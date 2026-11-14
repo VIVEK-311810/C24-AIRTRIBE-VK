@@ -51,7 +51,7 @@ public class Main {
                         System.out.println("Inventory Empty");
                     }else{
                         for(int i=0; i<count; i++){
-                            System.out.println((i+1) + ". ");
+                            System.out.print((i+1) + ". ");
                             products[i].display();
                         }
                     }
@@ -90,7 +90,7 @@ public class Main {
                     System.out.print("Quantity to add: ");
                     int extra = sc.nextInt();
                     sc.nextLine();
-                    if(num>0 && num<count && extra > 0){
+                    if(num>0 && num<=count && extra > 0){
                         products[num-1].quantity += extra;
                     }
                     else{
