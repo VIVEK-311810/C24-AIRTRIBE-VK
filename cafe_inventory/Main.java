@@ -38,14 +38,14 @@ public class Main {
                     // TODO: else if price <= 0 or quantity < 0, print an error message
                     // TODO: otherwise create the Product with the parameterized
                     //       constructor, store it at products[count] and increase count
-                    if(count=products.length){
+                    if(count==products.length){
                         System.out.println("Inventory Full");
                     }
                     else if(price <= 0 || quantity < 0){
-                        print("Invalid data");
+                        System.out.println("Invalid data");
                     }
                     else{
-                        products[count] = new Product(name, proce, quantity);
+                        products[count] = new Product(name, price, quantity);
                         count++;
                     }
                     break;
@@ -55,7 +55,7 @@ public class Main {
                     //       count - 1 and call display() on each product
                     //       (print the number i + 1 before each one)
                     if(count==0){
-                        print("Inventory Empty");
+                        System.out.println("Inventory Empty");
                     }
                     else{
                         for(int i=0; i<=count-1; i++){
