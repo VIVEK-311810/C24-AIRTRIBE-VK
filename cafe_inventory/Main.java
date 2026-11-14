@@ -38,7 +38,7 @@ public class Main {
                     // TODO: else if price <= 0 or quantity < 0, print an error message
                     // TODO: otherwise create the Product with the parameterized
                     //       constructor, store it at products[count] and increase count
-                    if(count=products.lenght){
+                    if(count=products.length){
                         System.out.println("Inventory Full");
                     }
                     else if(price <= 0 || quantity < 0){
@@ -54,12 +54,13 @@ public class Main {
                     // TODO: if count is 0 print a message, otherwise loop from 0 to
                     //       count - 1 and call display() on each product
                     //       (print the number i + 1 before each one)
-                    if(count=0){
+                    if(count==0){
                         print("Inventory Empty");
                     }
                     else{
-                        for(int i=1; i<=count; i++){
-                            System.out.println( i + '. ' + products[i-1].display());
+                        for(int i=0; i<=count-1; i++){
+                            System.out.println( (i+1) + '. ');
+                            products[i].display();
                         }
                     }
                     break;
@@ -68,7 +69,7 @@ public class Main {
                     // TODO: loop over the stored products, add up stockValue()
                     //       and print the total (message if count is 0)
                     double sum = 0;
-                    for(int i=0; i<=count-1; i++){
+                    for(int i=0; i<count; i++){
                         sum = sum + products[i].stockValue();
                     }
                     System.out.println("Total Value of inventory: " + sum);
@@ -77,12 +78,17 @@ public class Main {
                 case 4:
                     // TODO: calculate the average price as a double and print it
                     //       also print it rounded down using an explicit cast
-                    double sum = 0;
-                    for(int i=0; i<=count-1; i++){
-                        sum = sum + products[i].stockValue();
+                    if(count==0){
+                        System.out.println("Empty Inventory");
                     }
-                    System.out.println("Avg Value of inventory: " + sum/count);
-                    System.out.println("Total Value of inventory: " + int(sum/count));
+                    else{
+                        double total = 0;
+                        for(int i=0; i<count; i++){
+                            total = total + products[i].price;
+                        }
+                        System.out.println("Avg Value of inventory: " + total/count);
+                        System.out.println("Total Value of inventory: " + (int)total/count);   
+                    }
                     break;
 
                 case 5:
@@ -98,7 +104,7 @@ public class Main {
                         products[num-1].quantity += extra;
                     }
                     else{
-                        System.out.println("Error in restocking check the data".);
+                        System.out.println("Error in restocking check the data. Quantity to add must be greater than 0");
                     }
                     break;
 
@@ -110,8 +116,15 @@ public class Main {
                     // TODO: create a copy of products[n - 1] with the copy constructor,
                     //       add " (copy)" to the copy's name, store it at
                     //       products[count] and increase count
-                    if(1<n<count && count != products.lenght){
+                    if(n<1 || n>count){
+                        System.out.println("No Product available with that number");
+                    }
+                    else if(count == products.length){
+                        System.out.println("Inventory Full");
+                    }
+                    else{
                         Product copyProduct = new Product(products[n-1]);
+                        copyProduct.name = copyProduct.name + " {copy)";
                         products[count] = copyProduct;
                         count++;
                     }
