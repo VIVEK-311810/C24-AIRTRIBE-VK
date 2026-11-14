@@ -56,9 +56,8 @@ public class Main {
                     //       (print the number i + 1 before each one)
                     if(count==0){
                         System.out.println("Inventory Empty");
-                    }
-                    else{
-                        for(int i=0; i<=count-1; i++){
+                    }else{
+                        for(int i=0; i<count; i++){
                             System.out.println((i+1) + ". ");
                             products[i].display();
                         }
@@ -68,11 +67,16 @@ public class Main {
                 case 3:
                     // TODO: loop over the stored products, add up stockValue()
                     //       and print the total (message if count is 0)
-                    double sum = 0;
-                    for(int i=0; i<count; i++){
-                        sum = sum + products[i].stockValue();
+                    if(count==0){
+                        System.out.println("Inventory Empty");
                     }
-                    System.out.println("Total Value of inventory: " + sum);
+                    else{
+                        double sum = 0;
+                        for(int i=0; i<count; i++){
+                            sum = sum + products[i].stockValue();
+                        }
+                        System.out.println("Total Value of inventory: " + sum);
+                    }
                     break;
 
                 case 4:
@@ -87,7 +91,7 @@ public class Main {
                             total = total + products[i].price;
                         }
                         System.out.println("Avg Value of inventory: " + total/count);
-                        System.out.println("Total Value of inventory: " + (int)total/count);   
+                        System.out.println("Avg Value of inventory in round off: " + (int)total/count);   
                     }
                     break;
 
@@ -124,7 +128,7 @@ public class Main {
                     }
                     else{
                         Product copyProduct = new Product(products[n-1]);
-                        copyProduct.name = copyProduct.name + " {copy)";
+                        copyProduct.name = copyProduct.name + " (copy)";
                         products[count] = copyProduct;
                         count++;
                     }
