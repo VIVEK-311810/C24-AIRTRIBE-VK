@@ -34,51 +34,26 @@ public class Main {
                     System.out.print("Quantity: ");
                     int quantity = sc.nextInt();
                     sc.nextLine();
-                    if (count == products.length) {
-                        System.out.println("The array is full, you cannot add more products.");
-                    } else if (price <= 0 || quantity < 0) {
-                        System.out.println("Error: price must be above 0 and quantity cannot be negative.");
-                    } else {
-                        products[count] = new Product(name, price, quantity);
-                        count++;
-                    }
+                    // TODO: if the array is full (count is 10), print a message
+                    // TODO: else if price <= 0 or quantity < 0, print an error message
+                    // TODO: otherwise create the Product with the parameterized
+                    //       constructor, store it at products[count] and increase count
                     break;
 
                 case 2:
-                    if (count == 0) {
-                        System.out.println("No products yet.");
-                    } else {
-                        for (int i = 0; i < count; i++) {
-                            System.out.print((i + 1) + ". ");
-                            products[i].display();
-                        }
-                    }
+                    // TODO: if count is 0 print a message, otherwise loop from 0 to
+                    //       count - 1 and call display() on each product
+                    //       (print the number i + 1 before each one)
                     break;
 
                 case 3:
-                    if (count == 0) {
-                        System.out.println("No products yet.");
-                    } else {
-                        double total = 0;
-                        for (int i = 0; i < count; i++) {
-                            total += products[i].stockValue();
-                        }
-                        System.out.println("Total stock value: Rs " + total);
-                    }
+                    // TODO: loop over the stored products, add up stockValue()
+                    //       and print the total (message if count is 0)
                     break;
 
                 case 4:
-                    if (count == 0) {
-                        System.out.println("No products yet.");
-                    } else {
-                        double sum = 0;
-                        for (int i = 0; i < count; i++) {
-                            sum += products[i].price;
-                        }
-                        double average = sum / count;
-                        System.out.println("Average price: Rs " + average);
-                        System.out.println("Rounded down: " + (int) average);
-                    }
+                    // TODO: calculate the average price as a double and print it
+                    //       also print it rounded down using an explicit cast
                     break;
 
                 case 5:
@@ -87,29 +62,19 @@ public class Main {
                     System.out.print("Quantity to add: ");
                     int extra = sc.nextInt();
                     sc.nextLine();
-                    if (num < 1 || num > count) {
-                        System.out.println("Error: no product with that number.");
-                    } else if (extra <= 0) {
-                        System.out.println("Error: quantity to add must be above 0.");
-                    } else {
-                        products[num - 1].quantity += extra;
-                    }
+                    // TODO: check num is between 1 and count and extra is above 0,
+                    //       otherwise print an error; then add extra to the quantity
+                    //       of products[num - 1]
                     break;
 
                 case 6:
                     System.out.print("Product number: ");
                     int n = sc.nextInt();
                     sc.nextLine();
-                    if (n < 1 || n > count) {
-                        System.out.println("Error: no product with that number.");
-                    } else if (count == products.length) {
-                        System.out.println("The array is full, you cannot add more products.");
-                    } else {
-                        Product copy = new Product(products[n - 1]);
-                        copy.name = copy.name + " (copy)";
-                        products[count] = copy;
-                        count++;
-                    }
+                    // TODO: check n is between 1 and count (and the array is not full)
+                    // TODO: create a copy of products[n - 1] with the copy constructor,
+                    //       add " (copy)" to the copy's name, store it at
+                    //       products[count] and increase count
                     break;
 
                 case 0:
