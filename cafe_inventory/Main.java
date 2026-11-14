@@ -59,7 +59,7 @@ public class Main {
                     }
                     else{
                         for(int i=0; i<=count-1; i++){
-                            System.out.println( (i+1) + '. ');
+                            System.out.println((i+1) + ". ");
                             products[i].display();
                         }
                     }
@@ -79,7 +79,7 @@ public class Main {
                     // TODO: calculate the average price as a double and print it
                     //       also print it rounded down using an explicit cast
                     if(count==0){
-                        System.out.println("Empty Inventory");
+                        System.out.println("Inventory Empty");
                     }
                     else{
                         double total = 0;
