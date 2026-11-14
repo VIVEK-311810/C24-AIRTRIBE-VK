@@ -38,22 +38,51 @@ public class Main {
                     // TODO: else if price <= 0 or quantity < 0, print an error message
                     // TODO: otherwise create the Product with the parameterized
                     //       constructor, store it at products[count] and increase count
+                    if(count=products.lenght){
+                        System.out.println("Inventory Full");
+                    }
+                    else if(price <= 0 || quantity < 0){
+                        print("Invalid data");
+                    }
+                    else{
+                        products[count] = new Product(name, proce, quantity);
+                        count++;
+                    }
                     break;
 
                 case 2:
                     // TODO: if count is 0 print a message, otherwise loop from 0 to
                     //       count - 1 and call display() on each product
                     //       (print the number i + 1 before each one)
+                    if(count=0){
+                        print("Inventory Empty");
+                    }
+                    else{
+                        for(int i=1; i<=count; i++){
+                            System.out.println( i + '. ' + products[i-1].display());
+                        }
+                    }
                     break;
 
                 case 3:
                     // TODO: loop over the stored products, add up stockValue()
                     //       and print the total (message if count is 0)
+                    double sum = 0;
+                    for(int i=0; i<=count-1; i++){
+                        sum = sum + products[i].stockValue();
+                    }
+                    System.out.println("Total Value of inventory: " + sum);
                     break;
 
                 case 4:
                     // TODO: calculate the average price as a double and print it
                     //       also print it rounded down using an explicit cast
+                    double sum = 0;
+                    for(int i=0; i<=count-1; i++){
+                        sum = sum + products[i].stockValue();
+                    }
+                    System.out.println("Avg Value of inventory: " + sum/count);
+                    System.out.println("Total Value of inventory: " + int(sum/count));
                     break;
 
                 case 5:
@@ -65,6 +94,12 @@ public class Main {
                     // TODO: check num is between 1 and count and extra is above 0,
                     //       otherwise print an error; then add extra to the quantity
                     //       of products[num - 1]
+                    if(num>0 && num<count && extra > 0){
+                        products[num-1].quantity += extra;
+                    }
+                    else{
+                        System.out.println("Error in restocking check the data".);
+                    }
                     break;
 
                 case 6:
@@ -75,6 +110,11 @@ public class Main {
                     // TODO: create a copy of products[n - 1] with the copy constructor,
                     //       add " (copy)" to the copy's name, store it at
                     //       products[count] and increase count
+                    if(1<n<count && count != products.lenght){
+                        Product copyProduct = new Product(products[n-1]);
+                        products[count] = copyProduct;
+                        count++;
+                    }
                     break;
 
                 case 0:
