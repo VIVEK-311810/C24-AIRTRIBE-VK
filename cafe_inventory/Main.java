@@ -60,8 +60,7 @@ public class Main {
                 case 3:
                     if(count==0){
                         System.out.println("Inventory Empty");
-                    }
-                    else{
+                    } else{
                         double sum = 0;
                         for(int i=0; i<count; i++){
                             sum = sum + products[i].stockValue();
