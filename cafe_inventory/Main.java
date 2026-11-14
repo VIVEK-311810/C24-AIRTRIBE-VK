@@ -3,12 +3,10 @@
 import java.util.Scanner;
 
 public class Main {
-
     public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);   // reading input: provided for you
-        Product[] products = new Product[10];  // an array with room for 10 products
-        int count = 0;                         // how many products are stored so far
+        Scanner sc = new Scanner(System.in);
+        Product[] products = new Product[10];
+        int count = 0;
         int choice;
 
         do {
@@ -24,15 +22,13 @@ public class Main {
             System.out.print("Choose: ");
 
             choice = sc.nextInt();
-            sc.nextLine();   // clears the leftover newline after nextInt()
+            sc.nextLine();
 
             if (choice < 0 || choice > 6) {
                 System.out.println("Invalid choice, try again.");
             }
 
             switch (choice) {
-
-                // Option 1: add a product
                 case 1:
                     System.out.print("Name: ");
                     String name = sc.nextLine();
@@ -55,7 +51,6 @@ public class Main {
                     }
                     break;
 
-                // Option 2: display all products
                 case 2:
                     if (count == 0) {
                         System.out.println("No products yet.");
@@ -67,7 +62,6 @@ public class Main {
                     }
                     break;
 
-                // Option 3: total stock value
                 case 3:
                     if (count == 0) {
                         System.out.println("No products yet.");
@@ -80,7 +74,6 @@ public class Main {
                     }
                     break;
 
-                // Option 4: average price (with explicit cast for the rounded value)
                 case 4:
                     if (count == 0) {
                         System.out.println("No products yet.");
@@ -90,17 +83,14 @@ public class Main {
                             sum += products[i].price;
                         }
 
-                        // sum is a double, so the decimal part is kept
                         double average = sum / count;
 
                         System.out.println("Average price: Rs " + average);
 
-                        // Narrowing needs an explicit cast
                         System.out.println("Rounded down: " + (int) average);
                     }
                     break;
 
-                // Option 5: restock
                 case 5:
                     System.out.print("Product number: ");
                     int num = sc.nextInt();
@@ -120,7 +110,6 @@ public class Main {
                     }
                     break;
 
-                // Option 6: duplicate using the copy constructor
                 case 6:
                     System.out.print("Product number: ");
                     int n = sc.nextInt();
@@ -131,7 +120,7 @@ public class Main {
                     } else if (count == products.length) {
                         System.out.println("Error: the inventory is full (10 products).");
                     } else {
-                        Product copy = new Product(products[n - 1]);   // copy constructor
+                        Product copy = new Product(products[n - 1]);
                         copy.name = copy.name + " (copy)";
                         products[count] = copy;
                         count++;
@@ -139,7 +128,6 @@ public class Main {
                     }
                     break;
 
-                // Exit
                 case 0:
                     System.out.println("Goodbye!");
                     break;
